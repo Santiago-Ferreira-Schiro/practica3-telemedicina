@@ -1,0 +1,15 @@
+
+{
+  "name": "proyecto-telemedicina",
+  "version": "1.0.0",
+  "description": "Proyecto de telemedicina",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.x.x",
+    "express": "^4.21.0",
+    "jwt-simple": "^0.5.6"
+  }
+}
