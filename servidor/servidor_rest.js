@@ -2,6 +2,14 @@
 var express = require("express");
 var app = express();
 
+// 1. Importar el cliente de Supabase
+const { createClient } = require("@supabase/supabase-js");
+
+// 2. Configurar con tu URL y tu clave pública
+const supabaseUrl = "TU_URL_DE_SUPABASE";
+const supabaseKey = "TU_PUBLISHABLE_KEY";
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 // que toda la comunicación va a ser en json
 app.use(express.json()); 
 
@@ -27,5 +35,4 @@ require("./routes/recursos.js")(app);
 //establezco el puerto
 app.listen(3000);
 //por si hay que matar al puerto >netstat -ano | findstr :3000
-//taskkill /PID NUMERO_DEL_PID /F
-
+//taskkill /PID NUMERO_DEL_PID
