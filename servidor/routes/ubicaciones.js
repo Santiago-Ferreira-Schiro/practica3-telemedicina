@@ -1,16 +1,15 @@
-module.exports = function (app) {
+module.exports = function (app, supabase) {
 
-    var conexion = require("../conexion_mysql.js")
+    app.get("/api/ubicaciones", async function (req, res) {
+        const { data: ubicaciones, error } = await supabase
+            .from("ubicaciones")
+            .select("*");
 
-    app.get("/api/ubicaciones", function (req, res) {
-        var sql = "SELECT * FROM ubicaciones";
-        conexion.query(sql, function(err,ubicaciones){
-            if(err){
-                res.status(500).json("Error al realizar la consulta");
-            }else{
-                res.status(200).json(ubicaciones); 
-            }
-        });
-    }); 
+        if (error) {
+            res.status(500).json("Error al realizar la consulta");
+        } else {
+            res.status(200).json(ubicaciones);
+        }
+    });
 
 };
