@@ -6,8 +6,8 @@ var app = express();
 const { createClient } = require("@supabase/supabase-js");
 
 // 2. Configurar con tu URL y tu clave pública
-const supabaseUrl = "TU_URL_DE_SUPABASE";
-const supabaseKey = "TU_PUBLISHABLE_KEY";
+const supabaseUrl = "https://zbspubmoluralygrkgjd.supabase.co";
+const supabaseKey = "sb_publishable_CodnqKuB-SBA2d-4hvo4UQ_BBDaGZPp";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // que toda la comunicación va a ser en json
