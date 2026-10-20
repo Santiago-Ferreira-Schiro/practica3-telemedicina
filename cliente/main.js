@@ -743,9 +743,6 @@ function cargarRanking(reservas){
     // Ordenamos de mayor a menor
     areas.sort((a, b) => b.cantidad - a.cantidad);
 
-    //recortamos, solo necesitamos 5
-    areas = areas.slice(0,5);
-
     areas = traducirAreas(areas);
     
     imprimirRanking(areas);
