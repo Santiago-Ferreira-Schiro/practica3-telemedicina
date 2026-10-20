@@ -1,17 +1,17 @@
-module.exports = function (app) {
 
-    var conexion = require("../conexion_mysql.js")
+module.exports = function (app, supabase) {
 
-    app.get("/api/categorias", function (req, res) {
-        var sql = "SELECT * FROM categorias";
-        conexion.query(sql, function (err, categorias) {
-            if (err) {
-                console.log("Error al realizar la select de categorias", err);
-                res.status(500).json("Error al realizar la consulta de categorias");
-            } else {
-                res.status(200).json(categorias); 
-            }
-        });
+    app.get("/api/categorias", async function (req, res) {
+        const { data: categorias, error } = await supabase
+            .from("categorias")
+            .select("*");
+
+        if (error) {
+            console.log("Error al realizar la select de categorias", error);
+            res.status(500).json("Error al realizar la consulta de categorias");
+        } else {
+            res.status(200).json(categorias); 
+        }
     }); 
 
 };
